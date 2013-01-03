@@ -479,9 +479,83 @@ console.log( myObject.hasOwnProperty( 'baz' ) );
 					<h2>Creating functions</h2>
 				</section>
 
+				<section>
+					<h3>Two ways of creating functions</h3>
+					<pre class="fragment"><code>
+function myFunc( args ) {
+    ...
+};
+					</code></pre>
+					<pre class="fragment"><code>
+var myFunc = function( args ) {
+    ...
+};
+					</code></pre>
+				</section>
+
 				<section data-state="slide-level-two">
 					<h4>Functions</h4>
 					<h2>Hoisting</h2>
+				</section>
+
+				<section>
+					<h3>Function hoisting</h3>
+					<p class="fragment">There is one fundamental difference between function expressions and statements: hoisting.  Hoisting is when the JavaScript parser takes a function and variable declarations and moves them to the top of the current scope.</p>
+				</section>
+
+				<section>
+					<h3>Function Declaration Before Hoisting</h3>
+					<pre class="fragment"><code>
+function hoistingExample(){
+    var firstVar;
+
+    firstVar = &quot;&quot;;
+
+    var secondVar = &quot;&quot;;
+
+    secondFunction( firstVar + secondVar );
+
+    firstFunction(); //throws an error
+
+    var firstFunction = function(){
+        //do something
+    };
+
+    function secondFunction(){
+        // do another thing
+    }
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Function Declaration After Hoisting</h3>
+					<pre class="fragment"><code>
+function hoistingExample(){
+    //the function statement has been brought to the top of the scope
+    function secondFunction(){
+        // do another thing
+    }
+
+    //declared the variables
+    var firstVar;
+    var secondVar;
+    var firstFun;
+
+    //instantiate the variables where they are in the code
+    firstVar = &quot;&quot;;
+
+    secondVar = &quot;&quot;;
+
+    secondFunction( firstVar + secondVar );
+
+    firstFunction();
+
+    firstFunction = function(){
+        //do something
+    }
+}
+					</code></pre>
 				</section>
 
 				<section data-state="slide-level-two">
@@ -489,14 +563,61 @@ console.log( myObject.hasOwnProperty( 'baz' ) );
 					<h2>Arguments</h2>
 				</section>
 
+				<section>
+					<p class="fragment">Arguments in JavaScript are stored in an array-like object.  The "arguments" object has a length property but none of the other array methods.</p>
+					<pre class="fragment"><code>
+var myFunc = function(){
+    console.log( arguments );
+};
+
+myFunc( &quot;Hello&quot;, &quot;World&quot;, function(){} );
+					</code></pre>
+				</section>
+
+
 				<section data-state="slide-level-two">
 					<h4>Functions</h4>
 					<h2>typeof</h2>
 				</section>
 
+				<section>
+					<p class="fragment">Since JavaScript is a type-less language its always a good idea to check the type of arguments.</p>
+					<p class="fragment">To do this we are provided with the <code>typeof</code> operator.</p>
+					<pre class="fragment"><code>
+console.log("Type of string: " + typeof "hello");
+
+console.log( "Type of number: " + typeof 1234 );
+
+console.log( "Type of object literal: " + typeof {} );
+
+console.log( "Type of array: " + typeof [] ); //be carefull!
+
+console.log( "Type of function: " + typeof function(){} );
+
+console.log( "Type of function: " + typeof undefinedVar );
+					</code></pre>
+				</section>
+
+				<section>
+					<p class="fragment">To check if a variable is defined or not you can use the <code>typeof</code> operator on it.</p>
+					<p class="fragment">Doing <code>if( undefinedVar === 'undefined')</code> will throw an error.</p>
+				</section>
+
+
 				<section data-state="slide-level-two">
 					<h4>Functions</h4>
 					<h2>typeof for arrays</h2>
+				</section>
+
+				<section>
+					<pre class="fragment"><code>console.log( typeof [] ); //object ?!?</code></pre>
+					<p class="fragment"></p>
+					<pre class="fragment"><code>
+//borrowed from Douglas Crockford&#39;s &quot;JavaScript: The Good Parts&quot;
+var is_array = function ( value ) {
+    return Object.prototype.toString.apply( value ) === &#39;[object Array]&#39;;
+};
+					</code></pre>
 				</section>
 
 				<section data-state="slide-level-two">
@@ -504,9 +625,64 @@ console.log( myObject.hasOwnProperty( 'baz' ) );
 					<h2>arguments pass by value</h2>
 				</section>
 
+				<section>
+					<p class="fragment">All arguments JavaScript are passed <strong>by value</strong>, even though they act like they are being passed by reference.</p>
+					<pre class="fragment"><code>
+function createCar(){
+    var myCar = { make : "Ford", model : "Fusion" };
+
+    changeCar( myCar );
+
+    //if mycar was passed by ref it would now be a Honda!
+    console.log(myCar);
+}
+
+function changeCar( theObj ){
+
+    theObj.make = "Chevy";
+    theObj.model = "Traverse";
+
+    theObj = {}; //this breaks the link between the value passed in and its reference
+    theObj.make = "Honda";
+
+    console.log( theObj );
+}
+
+createCar();
+					</code></pre>
+				</section>
+
+				<section>
+					<p class="fragment">A variable that holds an object is a pointer to the memory location of that object.  When the argument is passed a copy is made of that pointer.  When a new object is created the pointer now points to a different memory location.</p>
+					<!-- TODO Add image here -->
+					<img src="" alt="" class="fragment" />
+				</section>
+
 				<section data-state="slide-level-two">
 					<h4>Functions</h4>
 					<h2>Lexical scoping</h2>
+				</section>
+
+				<section>
+					<p class="fragment">Functions can be nested inside of other functions.  Each nested function has access to the scope of all its parents.  This is called lexical scoping. </p>
+					<pre class="fragment">
+var lexical = function(){
+    var outerVar = 'outer';
+
+    return function(){
+
+        var innerVar = "inner"; //outer function does not have access
+
+        console.log( outerVar );
+
+            return function(){
+                console.log( innerVar, outerVar );
+            }();
+    }();
+};
+
+lexical();
+					</pre>
 				</section>
 
 				<section data-state="slide-level-two">
@@ -514,43 +690,97 @@ console.log( myObject.hasOwnProperty( 'baz' ) );
 					<h2>Closures</h2>
 				</section>
 
+				<section>
+					<ul>
+						<li class="fragment">Closures are created when a reference exists to a variable inside a function after that function has been invoked.</li>
+						<li class="fragment">The execution context of that variables scope is saved and "wrapped" around that variable.</li>
+						<li class="fragment">This effectively saves the "state" of that variables entire scope at the time the function is run.</li>
+					</ul>
+				</section>
+
+				<section>
+					<pre class="fragment"><code>
+var timesCalled = function(){
+    var total = 0;
+
+    return function(){
+        total++;
+        console.log( total );
+    };
+
+};
+
+var callTimer = timesCalled(); //this call right here creates the closure
+
+callTimer();
+					</code></pre>
+				</section>
+
 				<section data-state="slide-level-two">
 					<h4>Functions</h4>
 					<h2>Constructor functions</h2>
 				</section>
 
-				<section data-state="slide-level-one">
-					<h1>Inheritance</h1>
+				<section>
+					<p class="fragment">JavaScript has a special type of function called a <code>Constructor</code> function.</p>
+					<ul>
+						<li class="fragment">By convention the first letter of a constructor should be a capital letter.</li>
+						<li class="fragment">Never use a constructor function without first using the <code>new</code> keyword!</li>
+						<li class="fragment">Using the new keyword will create a new scope for the function.</li>
+						<li class="fragment">Using the new keyword will also create the inheritance tree. Without new a function will only inherit from the Function Constructor.</li>
+					</ul>
 				</section>
 
-				<section data-state="slide-level-two">
-					<h4>Inheritance</h4>
-					<h2>Intro</h2>
+				<section>
+					<pre><code>
+//create a new constuctor function called Robot
+var Robot = function( robotName ){
+    this.robotName = robotName;
+};
+
+//add a new property to the prototype (more on this soon)
+Robot.prototype.walk = function(){
+    console.log( "Go " + this.robotName + " go!" );
+};
+
+//create a new instance of the robot using the new keyword
+var robot = new Robot( "Ferbbot" );
+
+//now we can tell the robot to walk
+robot.walk();
+
+var anotherRobot = Robot( "Phineasbot" ); //we just created a global!!
+
+console.log( window.robotName ); //note that robotName is now a property of window
+
+//anotherRobot.walk(); //doesn't exist
+					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
-					<h4>Inheritance</h4>
-					<h2>Constructor function</h2>
+				<section>
+					<p class="fragment">Create a new variable for our constructor function.  Make sure the name starts with a capital letter!</p>
+					<pre class="fragment"><code>
+var Robot = function( robotName ){
+	this.robotName = robotName;
+};
+					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
-					<h4>Inheritance</h4>
-					<h2>instanceof</h2>
+				<section>
+					<p class="fragment">Now add a new property to the prototype of the constructor.</p>
+					<p class="fragment">This is initialized with the prototype chain when the <code>new</code> keyword is used.</p>
+					<pre class="fragment"><code>
+Robot.prototype.walk = function(){
+    console.log( "Go " + this.robotName + " go!" );
+};
+					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
-					<h4>Inheritance</h4>
-					<h2>prototype</h2>
-				</section>
-
-				<section data-state="slide-level-two">
-					<h4>Inheritance</h4>
-					<h2>prototype members</h2>
-				</section>
-
-				<section data-state="slide-level-two">
-					<h4>Inheritance</h4>
-					<h2>prototype members on native objects</h2>
+				<section>
+					<p class="fragment">Correct.</p>
+					<pre class="fragment"><code>var robot = new Robot( "Ferbbot" );</code></pre>
+					<p class="fragment">Incorrect, not using the keyword does not create a scope or a prototype chain.</p>
+					<pre class="fragment"><code>var anotherRobot = Robot( "Phineasbot" );</code></pre>
 				</section>
 
 				<section data-state="slide-level-one">
@@ -562,9 +792,34 @@ console.log( myObject.hasOwnProperty( 'baz' ) );
 					<h2>Intro</h2>
 				</section>
 
+				<section>
+					<p class="fragment">The <code>this</code> keyword one of JavaScript's most mis-understood keywords.</p>
+					<pre class="fragment"><code>
+var myObj = {
+    myFunc : function() {
+        console.log(this);
+    }
+};
+
+var myFunc = function() {
+    console.log(this);
+};
+
+myObj.myFunc();
+myFunc();
+					</code></pre>
+				</section>
+
 				<section data-state="slide-level-two">
 					<h4>This</h4>
 					<h2>Execution context</h2>
+				</section>
+
+				<section>
+					<p class="fragment">What happened in the function call?  Why did this point to window and not the function?</p>
+					<p class="fragment">In order to explain we must understand what "this" means in JavaScript.  This refers to the <strong>current execution context.</strong></p>
+					<p class="fragment">When we called the myFunc function from within the object, the object was the current execution context.</p>
+					<p class="fragment">When we called <code>myFunc()</code> from the root of the script tag, the window object was the current execution context.</p>
 				</section>
 
 				<section data-state="slide-level-two">
@@ -572,9 +827,59 @@ console.log( myObject.hasOwnProperty( 'baz' ) );
 					<h2>call() and apply()</h2>
 				</section>
 
+				<section>
+					<p class="fragment">The <code>call(this,arg1, arg2, arg3, ...)</code> and <code>apply(this,[args])</code> functions allow you to pass the value of <code>this</code> as the first parameter.</p>
+					<p class="fragment">The difference is that the call function takes in any number of arguments whereas the apply function takes an array of arguments as its second argument.</p>
+					<pre class="fragment"><code>
+function whoAmI(){
+    console.log( "I am: " + this );
+
+    console.log( arguments );
+}
+
+whoAmI.call( "Ryan", "Hello World", undefined, {}, [] );
+
+whoAmI.apply( "Scott", [ "Hello World", undefined, {}, [] ] );
+					</code></pre>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>This</h4>
+					<h2>this in constructor functions</h2>
+				</section>
+
+				<section>
+					<pre><code>
+function Person( name ){
+    this.name = name;
+
+    console.log( this );
+    console.log( this.name );
+}
+
+var person = new Person( &quot;Bart&quot; );
+					</code></pre>
+				</section>
+
 				<section data-state="slide-level-two">
 					<h4>This</h4>
 					<h2>this in object literals</h2>
+				</section>
+
+				<section>
+					<pre><code>
+var myObj = {
+    firstName : "Homer",
+
+    sayHello : function(){
+
+        //omitting this would cause an error
+        console.log( "Hello, " + this.firstName );
+    }
+};
+
+myObj.sayHello();
+					</code></pre>
 				</section>
 
 				<section data-state="slide-level-two">
@@ -582,9 +887,34 @@ console.log( myObject.hasOwnProperty( 'baz' ) );
 					<h2>this in nested functions</h2>
 				</section>
 
+				<section>
+					<pre><code>
+var myObj = {
+    firstName : &quot;Homer&quot;,
+
+    sayHello : function(){
+        //look what happens when this is used inside a nested function
+        return function(){
+            console.log( &quot;Hello, &quot; + this.firstName );
+            console.log( this );
+        };
+    }
+};
+
+myObj.sayHello();
+					</code></pre>
+					<p class="fragment">In nested functions <code>this</code> refers back to global namespace!</p>
+				</section>
+
 				<section data-state="slide-level-two">
 					<h4>This</h4>
 					<h2>More links on this</h2>
+				</section>
+
+				<section>
+					<p class="fragment">For a much more comprehensive look at "this" and "function invocation" read:
+					<p class="fragment">Yehuda Kat's blog post: <a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/" target="_blank">http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/</a></p>
+					<p class="fragment">Scope In JavaScript: <a href="http://www.digital-web.com/articles/scope_in_javascript/">http://www.digital-web.com/articles/scope_in_javascript/</a></p>
 				</section>
 			</div>
 
