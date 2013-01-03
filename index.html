@@ -35,16 +35,22 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 
-				<section>
+				<section data-state="slide-level-one">
 					<h1>JavaScript For You!</h1>
-					<p>
-						<small>By <a href="http://rishabhsrao.github.com">Rishabh Rao</a> | <a href="http://twitter.com/rishabhsrao">@rishabhsrao</a></small>
-					</p>
 				</section>
 
-				<section data-state="title-slide slidebg-agenda">
+				<section data-state="slide-level-one">
+					<h1>Welcome and thank you for coming!</h2>
+				</section>
+
+				<section data-state="slide-level-one">
+					<h1>Brag about us!</h2>
+				</section>
+
+				<section data-state="slide-level-one">
 					<h2>Today&rsquo;s agenda</h2>
 					<ol>
+						<li class="fragment">History</li>
 						<li class="fragment">Basics</li>
 						<li class="fragment">Objects</li>
 						<li class="fragment">Functions</li>
@@ -53,11 +59,15 @@
 					</ol>
 				</section>
 
-				<section>
+				<section data-state="slide-level-one">
+					<h1>History</h1>
+				</section>
+
+				<section data-state="slide-level-one">
 					<h1>Basics</h1>
 				</section>
 
-				<section>
+				<section data-state="slide-level-two">
 					<h4>Basics</h4>
 					<h2>Variables</h2>
 				</section>
@@ -128,20 +138,454 @@ doSometing();
 						</code></pre>
 				</section>
 
-				<section>
+				<section data-state="slide-level-two">
 					<h4>Basics</h4>
 					<h2>Numbers</h2>
 				</section>
 
 				<section>
-					<h2>Not a number?!</h2>
-					<p></p>
+					<h2>Introduction</h2>
+					<p class="fragment">All numbers in JavaScript are 64-bit floating point numbers.</p>
+					<p class="fragment">Floating point arithmetic sometimes give strange results (<a href="http://download.oracle.com/docs/cd/E19957-01/806-3568/ncg_goldberg.html">http://download.oracle.com/docs/cd/E19957-01/806-3568/ncg_goldberg.html</a>).</p>
+					<pre class="fragment"><code>
+var result = 0.06 + 0.01;
+console.log( "0.06 + 0.01 = " + result );
+						</code></pre>
 				</section>
 
 				<section>
-					<h1>Arrays</h1>
+					<h2>More about numbers</h2>
+
+					<p class="fragment">
+						JavaScript has a <strong>BigNum</strong> library which will improve the accuracy of floating point expressions at <a href="https://github.com/jtobey/javascript-bignum" target="_blank">https://github.com/jtobey/javascript-bignum</a>
+					</p>
+
+					<p class="fragment">Use the <code>toFixed()</code> method to round a number to a specified number of decimal places.</p>
+					<pre class="fragment"><code>
+console.log( 3.14159.toFixed( 2 ) ); // 3.14
+					</code></pre>
 				</section>
 
+				<section>
+					<h2>Not a number?!</h2>
+					<p class="fragment"><code>NaN</code>, is a special value in JavaScript. You'll get <code>NaN</code> in situations like trying to do math on a variable that is <code>undefined</code> or trying to perform multiplication, division, or subtraction on a string.</p>
+					<ul>
+			        <li class="fragment"><code>NaN is False</code></li>
+			        <li class="fragment"><code>NaN !== NaN (NaN is not even != NaN)</code></li>
+			        <li class="fragment"><code>typeof NaN</code> is number.</li>
+			        <li class="fragment">Use <code>isNaN()</code> to test for NaN</li>
+			    </ul>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Basics</h4>
+					<h2>Arrays</h2>
+				</section>
+
+				<section>
+					<h2>Creating arrays</h2>
+					<p class="fragment">Arrays can be created two ways:</p>
+					<pre class="fragment"><code>var myArray = new Array( 'item1', 'item2', myobj, [] );</code></pre>
+					<p class="fragment">and</p>
+					<pre class="fragment"><code>var myArray = [ "item1", "item2", myObj, [] ]; //prefered</code></pre>
+					<p class="fragment">In order to create multi-dimensional arrays in JavaScript you nest arrays:</p>
+					<pre class="fragment"><code>myArray[ 0 ] = [ "nested one", "nested two" ];
+					myArray[ 0 ][ 1 ]; //nested two</code></pre>
+				</section>
+
+				<section>
+					<h2>Array methods</h2>
+					<p class="fragment">Arrays are objects so they have methods.</p>
+
+					<pre class="fragment"><code>myArray.length; // mutable in JS, set length to resize arary</code></pre>
+					<pre class="fragment"><code>myArray.push( item ); // append item to the end of the array</code></pre>
+					<pre class="fragment"><code>myArray.pop(); // removes the last element of the array and returns it</code></pre>
+					<pre class="fragment"><code>myArray.concat( anotherArray ); // adds two arrays together, returns a new array. myArray unchanged!</code></pre>
+					<pre class="fragment"><code>myArray.join( &quot;,&quot; ); // combines elements into string, separated by argument</code></pre>
+					<pre class="fragment"><code>myArray.slice( 1, 2 ) //returns 2 items from the array starting at position 1</code></pre>
+					<pre class="fragment"><code>myArray.shift() //removes the first element of the array and returns it</code></pre>
+				</section>
+
+				<section>
+					<h2>Stack</h2>
+					<p class="fragment">Use <code>push()</code> &amp; <code>pop</code> together to create a stack (LIFO)</p>
+					<pre class="fragment"><code>
+myStack.push( 'Taylor Swift' );
+
+console.log( myStack );
+
+console.log( myStack.pop() );
+
+console.log( myStack )
+
+console.log( myStack.pop() );
+
+console.log( myStack );
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Queue</h2>
+					<p class="fragment">Use <code>push</code> &amp; <code>shift</code> together to create a queue (FIFO)</p>
+					<pre class="fragment"><code>
+myQueue.push( 'Taylor Swift' );
+
+console.log( myQueue );
+
+console.log( myQueue.shift() );
+
+console.log( myQueue );
+
+console.log( myQueue.shift() );
+
+console.log( myQueue );
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Deep copy</h2>
+					<p class="fragment">Use <code>slice()</code> to make a one-level deep-copy of an array.</p>
+					<pre class="fragment"><code>
+var myArray = [ 'Aaron', 'Drew', 'Tom', 'Peyton' ];
+
+var myArray2 = myArray; //holds a reference to myArray
+
+var myArray3 = myArray.slice(); //is truly a new array
+
+myArray2[ 2 ] = 'Cam'; // changes myArray
+
+myArray3[ 1 ] = 'Phillip';
+
+console.log( myArray );
+console.log( myArray2 );
+console.log( myArray3 );
+					</code></pre>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Basics</h4>
+					<h2>Operators</h2>
+				</section>
+
+				<section>
+					<h2>Comparision</h2>
+					<p class="fragment">In JavaScript there are 2 sets of comparison operators:</p>
+					<ul>
+						<li class="fragment">Type coercion operators: <code>==</code> and <code>!=</code></li>
+						<li class="fragment">Non-type coercion operators (a.k.a. exactly equal): <code>===</code> and <code>!==</code></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>What exactly is type coersion?</h2>
+					<pre class="fragment"><code>
+console.log( "1" == 1 );
+
+console.log( "1" === 1 );
+
+console.log( [7] == 7 );
+
+console.log( [7] === 7 );
+
+console.log( false == '' );
+
+console.log( false === '' );
+					</code></pre>
+					<p class="fragment">Always use === when comparing a variable <code>0</code>, <code>undefined</code>, booleans, <code>null</code>, and empty strings "".</strong></p>
+				</section>
+
+				<section>
+					<h2>Truthy and Falsy Values</h2>
+					<p class="fragment">The following values evaluate to <code>false</code>, since some of them not primitive boolean datatypes they are said to be "falsy".</p>
+					<ul>
+						<li><code>false</code></li>
+						<li><code>0</code></li>
+						<li><code>""</code></li>
+						<li><code>undefined</code></li>
+						<li><code>NaN</code></li>
+						<li><code>null</code></li>
+					</ul>
+					<p class="fragment"><strong>Anything that is not falsy is truthy in JavaScript.</strong></p>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h2>Logical operators</h2>
+				</section>
+
+				<section>
+					<h2>OR operator</h2>
+					<p class="fragment">The <code>||</code> operator returns the value of the first expression if it's true otherwise returns the value of the second expression.</p>
+					<pre class="fragment"><code>
+console.log( null || "hello" );
+
+console.log( "world" || "foo" );
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Using OR operator for assigning default values</h2>
+					<p class="fragment">The <code>||</code> operator can be used to set default values.</p>
+					<pre class="fragment"><code>
+var myFunc = function( arg ){
+
+	var myVal =
+		document.getElementById( arg ) ||
+		document.createElement( &quot;div&quot; ); // defaultValue
+
+	console.log( myVal );
+};
+
+myFunc( );
+myFunc( &quot;andor3&quot; );
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>AND operator</h2>
+					<p class="fragment">The <code>&amp;&amp;</code> returns the value of the first expression if it is false, otherwise it returns the value of the second.</p>
+					<pre class="fragment"><code>
+console.log( 1 - 1 &amp;&amp; "Foo" );
+
+console.log( 1 + 1 &amp;&amp; "Bar" );
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Ternary operator</h2>
+					<p class="fragment">The ternary operator is a terse way to do a simple if/else statement.</p>
+					<pre class="fragment"><code>
+var myVar = 10;
+
+var myValue = ( myVar &lt; 10 ) ? 'lesser' : 'greater';
+
+console.log( myValue );
+					</code></pre>
+
+					<pre class="fragment"><code>
+var myVar = 10,
+	 myValue;
+
+if(myVar &lt; 10) {
+	myValue = 'lesser';
+} else {
+	myValue = 'greater';
+}
+
+console.log( myValue );
+					</code></pre>
+				</section>
+
+				<section data-state="slide-level-one">
+					<h1>Objects</h1>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Objects</h4>
+					<h2>Object Basics</h2>
+				</section>
+
+				<section>
+					<h2>Introduction</h2>
+					<p class="fragment">Objects in JavaScript can be thought of as a set of key-value pairs.</p>
+					<pre class="fragment"><code>
+myObject = { }; //empty object
+
+myObject2 = {
+    foo : &quot;Foo&quot;,
+    bar : &quot;Bar&quot;,
+    anotherObject : {
+        baz : &quot;Baz&quot;,
+        pez : &quot;Pez&quot;
+    }
+}; //this is called an object literal pattern
+					</code></pre>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Objects</h4>
+					<h2>Retrival</h2>
+				</section>
+
+				<section>
+					<h2>Object access</h2>
+					<p>You can access an object's properties with "dot" notation or with associative array notation.</p>
+					<pre class="fragment"><code>
+var myObject = {
+    foo : 'Foo'
+};
+
+myObject[ 'foo bar' ] = 'foo bar'; // non standard property names
+
+console.log( myObject.foo );
+
+console.log( myObject[ 'foo' ] );
+
+console.log( myObject ['foo ' + 'bar' ] );
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Access object properties from methods</h2>
+					<p class="fragment">When accessing properties from other properties in an object, use the <code>this</code> keyword.</p>
+					<pre class="fragment"><code>
+var myObj = {
+
+    firstName : 'Homer',
+
+    sayHello : function(){
+        //omitting the this keyword below would generate an error
+        console.log( 'Hello, ' + this.firstName );
+    }
+};
+
+myObj.sayHello();
+					</code></pre>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Objects</h4>
+					<h2>Own Property</h2>
+				</section>
+
+				<section>
+					<h2>hasOwnProperty()</h2>
+					<p>To check if a property exists in an object use the <code>hasOwnProperty()</code> method or the <code>in</code> operator. <code>hasOwnProperty</code> will only search the current object for a property whereas <code>in</code> will search all the way up the prototype chain.</p>
+					<pre class="fragment"><code>
+var myObject = {foo : 'Foo'};
+
+myObject.__proto__ = { baz : "Baz" }; //we'll talk about this later
+
+console.log( 'baz' in myObject );
+
+console.log( myObject.hasOwnProperty( 'baz' ) );
+					</code></pre>
+				</section>
+
+				<section data-state="slide-level-one">
+					<h1>Functions</h1>
+				</section>
+
+				<section>
+					<h3>Introduction</h3>
+					<p class="fragment">JavaScript functions are the beating heart of a JavaScript application and are one of the most powerful features of the language.</p>
+					<ul>
+						<li class="fragment">All functions return something!  If there is no <code>return</code> statement a function will return the keyword <code>undefined</code>.</li>
+						<li class="fragment">Functions can have properties just like objects.</li>
+					</ul>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Functions</h4>
+					<h2>Creating functions</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Functions</h4>
+					<h2>Hoisting</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Functions</h4>
+					<h2>Arguments</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Functions</h4>
+					<h2>typeof</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Functions</h4>
+					<h2>typeof for arrays</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Functions</h4>
+					<h2>arguments pass by value</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Functions</h4>
+					<h2>Lexical scoping</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Functions</h4>
+					<h2>Closures</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Functions</h4>
+					<h2>Constructor functions</h2>
+				</section>
+
+				<section data-state="slide-level-one">
+					<h1>Inheritance</h1>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Inheritance</h4>
+					<h2>Intro</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Inheritance</h4>
+					<h2>Constructor function</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Inheritance</h4>
+					<h2>instanceof</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Inheritance</h4>
+					<h2>prototype</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Inheritance</h4>
+					<h2>prototype members</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>Inheritance</h4>
+					<h2>prototype members on native objects</h2>
+				</section>
+
+				<section data-state="slide-level-one">
+					<h1>This</h1>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>This</h4>
+					<h2>Intro</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>This</h4>
+					<h2>Execution context</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>This</h4>
+					<h2>call() and apply()</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>This</h4>
+					<h2>this in object literals</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>This</h4>
+					<h2>this in nested functions</h2>
+				</section>
+
+				<section data-state="slide-level-two">
+					<h4>This</h4>
+					<h2>More links on this</h2>
+				</section>
 			</div>
 
 		</div>
