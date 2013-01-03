@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="css/custom.css">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="lib/css/tomorrow.css">
 
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
@@ -41,11 +41,17 @@
 				</section>
 
 				<section data-state="slide-level-one welcome-thank-you">
-					<h1>Welcome and thank you for coming!</h2>
+					<h1>Welcome!</h1>
+					<h2>Thank you for coming!</h2>
 				</section>
 
 				<section data-state="slide-level-one brag">
 					<h1>Brag about us!</h2>
+					<ul>
+						<li class="fragment">Dhanraj B. (dhanrajb@metricstream.com)</li>
+						<li class="fragment">Safeer M. (msafeer@metricstream.com)</li>
+						<li class="fragment">Rishabh R. (rishabhr@metricstream.com)</li>
+					</ul>
 				</section>
 
 				<section data-state="slide-level-one agenda">
@@ -83,14 +89,14 @@
 						<li class="fragment">Number</li>
 						<li class="fragment">Object</li>
 						<li class="fragment">Boolean</li>
-						<li class="fragment"><code>undefined</code></li>
-						<li class="fragment"><code>null</code></li>
+						<li class="fragment"><code class="javascript">undefined</code></li>
+						<li class="fragment"><code class="javascript">null</code></li>
 					</ol>
 				</section>
 
 				<section>
 					<h2>Variable scope</h2>
-					<pre><code>
+					<pre><code class="javascript">
 function doSomething() {
 	myVar = &quot;foo&quot;; //this goes into the global scope
 	var myOtherVar = &quot;bar&quot;; //this goes into the function scope
@@ -103,7 +109,7 @@ console.log( myOtherVar ); //error
 
 				<section>
 					<h2>Oops!</h2>
-					<pre><code>
+					<pre><code class="javascript">
 function doSometing(){
 	for( i = 0; i < 10; i++ ){
    	doMore();
@@ -123,7 +129,7 @@ doSometing();
 
 				<section>
 					<h2>That's better!</h2>
-					<pre><code>
+					<pre><code class="javascript">
 function doSometing() {
   for( var i = 0; i < 10; i++ ) {
     doMore();
@@ -148,35 +154,36 @@ doSometing();
 
 				<section>
 					<h2>Introduction</h2>
-					<p class="fragment">All numbers in JavaScript are 64-bit floating point numbers.</p>
-					<p class="fragment">Floating point arithmetic sometimes give strange results (<a href="http://download.oracle.com/docs/cd/E19957-01/806-3568/ncg_goldberg.html">http://download.oracle.com/docs/cd/E19957-01/806-3568/ncg_goldberg.html</a>).</p>
-					<pre class="fragment"><code>
+					<ul>
+						<li class="fragment">All numbers in JavaScript are 64-bit floating point numbers.</li>
+						<li class="fragment">Floating point arithmetic sometimes gives strange results <a href="http://download.oracle.com/docs/cd/E19957-01/806-3568/ncg_goldberg.html">[1]</a>.</li>
+					</ul>
+					<pre class="fragment"><code class="javascript">
 var result = 0.06 + 0.01;
-console.log( "0.06 + 0.01 = " + result );
+console.log( "0.06 + 0.01 = " + result ); // 0.06999999999999999
 						</code></pre>
 				</section>
 
 				<section>
 					<h2>More about numbers</h2>
 
-					<p class="fragment">
-						JavaScript has a <strong>BigNum</strong> library which will improve the accuracy of floating point expressions at <a href="https://github.com/jtobey/javascript-bignum" target="_blank">https://github.com/jtobey/javascript-bignum</a>
-					</p>
-
-					<p class="fragment">Use the <code>toFixed()</code> method to round a number to a specified number of decimal places.</p>
-					<pre class="fragment"><code>
+					<ul>
+						<li class="fragment">JavaScript has a <strong>BigNum</strong> library which will improve the accuracy of floating point expressions at <a href="https://github.com/jtobey/javascript-bignum" target="_blank">https://github.com/jtobey/javascript-bignum</a></li>
+						<li class="fragment">Use the <code class="javascript">toFixed()</code> method to round a number to a specified number of decimal places.</li>
+					</ul>
+					<pre class="fragment"><code class="javascript">
 console.log( 3.14159.toFixed( 2 ) ); // 3.14
 					</code></pre>
 				</section>
 
 				<section>
 					<h2>Not a number?!</h2>
-					<p class="fragment"><code>NaN</code>, is a special value in JavaScript. You'll get <code>NaN</code> in situations like trying to do math on a variable that is <code>undefined</code> or trying to perform multiplication, division, or subtraction on a string.</p>
+					<p class="fragment"><code class="javascript">NaN</code>, is a special value in JavaScript. You'll get <code class="javascript">NaN</code> in situations like trying to do math on a variable that is <code class="javascript">undefined</code> or trying to perform multiplication, division, or subtraction on a string.</p>
 					<ul>
-			        <li class="fragment"><code>NaN is False</code></li>
-			        <li class="fragment"><code>NaN !== NaN (NaN is not even != NaN)</code></li>
-			        <li class="fragment"><code>typeof NaN</code> is number.</li>
-			        <li class="fragment">Use <code>isNaN()</code> to test for NaN</li>
+			        <li class="fragment"><code class="javascript">NaN is False</code></li>
+			        <li class="fragment"><code class="javascript">NaN !== NaN (NaN is not even != NaN)</code></li>
+			        <li class="fragment"><code class="javascript">typeof NaN</code> is number.</li>
+			        <li class="fragment">Use <code class="javascript">isNaN()</code> to test for NaN</li>
 			    </ul>
 				</section>
 
@@ -188,31 +195,32 @@ console.log( 3.14159.toFixed( 2 ) ); // 3.14
 				<section>
 					<h2>Creating arrays</h2>
 					<p class="fragment">Arrays can be created two ways:</p>
-					<pre class="fragment"><code>var myArray = new Array( 'item1', 'item2', myobj, [] );</code></pre>
+					<pre class="fragment"><code class="javascript">var myArray = new Array( 'item1', 'item2', myobj, [] );</code></pre>
 					<p class="fragment">and</p>
-					<pre class="fragment"><code>var myArray = [ "item1", "item2", myObj, [] ]; //prefered</code></pre>
+					<pre class="fragment"><code class="javascript">var myArray = [ "item1", "item2", myObj, [] ]; //prefered</code></pre>
 					<p class="fragment">In order to create multi-dimensional arrays in JavaScript you nest arrays:</p>
-					<pre class="fragment"><code>myArray[ 0 ] = [ "nested one", "nested two" ];
-					myArray[ 0 ][ 1 ]; //nested two</code></pre>
+					<pre class="fragment"><code class="javascript">
+myArray[ 0 ] = [ "nested one", "nested two" ];
+myArray[ 0 ][ 1 ]; //nested two</code></pre>
 				</section>
 
 				<section>
 					<h2>Array methods</h2>
 					<p class="fragment">Arrays are objects so they have methods.</p>
 
-					<pre class="fragment"><code>myArray.length; // mutable in JS, set length to resize arary</code></pre>
-					<pre class="fragment"><code>myArray.push( item ); // append item to the end of the array</code></pre>
-					<pre class="fragment"><code>myArray.pop(); // removes the last element of the array and returns it</code></pre>
-					<pre class="fragment"><code>myArray.concat( anotherArray ); // adds two arrays together, returns a new array. myArray unchanged!</code></pre>
-					<pre class="fragment"><code>myArray.join( &quot;,&quot; ); // combines elements into string, separated by argument</code></pre>
-					<pre class="fragment"><code>myArray.slice( 1, 2 ) //returns 2 items from the array starting at position 1</code></pre>
-					<pre class="fragment"><code>myArray.shift() //removes the first element of the array and returns it</code></pre>
+					<pre class="fragment"><code class="javascript">myArray.length; // mutable in JS, set length to resize arary</code></pre>
+					<pre class="fragment"><code class="javascript">myArray.push( item ); // append item to the end of the array</code></pre>
+					<pre class="fragment"><code class="javascript">myArray.pop(); // removes the last element of the array and returns it</code></pre>
+					<pre class="fragment"><code class="javascript">myArray.concat( anotherArray ); // adds two arrays together, returns a new array. myArray unchanged!</code></pre>
+					<pre class="fragment"><code class="javascript">myArray.join( &quot;,&quot; ); // combines elements into string, separated by argument</code></pre>
+					<pre class="fragment"><code class="javascript">myArray.slice( 1, 2 ) //returns 2 items from the array starting at position 1</code></pre>
+					<pre class="fragment"><code class="javascript">myArray.shift() //removes the first element of the array and returns it</code></pre>
 				</section>
 
 				<section>
 					<h2>Stack</h2>
-					<p class="fragment">Use <code>push()</code> &amp; <code>pop</code> together to create a stack (LIFO)</p>
-					<pre class="fragment"><code>
+					<p class="fragment">Use <code class="javascript">push()</code> &amp; <code class="javascript">pop</code> together to create a stack (LIFO)</p>
+					<pre class="fragment"><code class="javascript">
 myStack.push( 'Taylor Swift' );
 
 console.log( myStack );
@@ -229,8 +237,8 @@ console.log( myStack );
 
 				<section>
 					<h2>Queue</h2>
-					<p class="fragment">Use <code>push</code> &amp; <code>shift</code> together to create a queue (FIFO)</p>
-					<pre class="fragment"><code>
+					<p class="fragment">Use <code class="javascript">push</code> &amp; <code class="javascript">shift</code> together to create a queue (FIFO)</p>
+					<pre class="fragment"><code class="javascript">
 myQueue.push( 'Taylor Swift' );
 
 console.log( myQueue );
@@ -247,8 +255,8 @@ console.log( myQueue );
 
 				<section>
 					<h2>Deep copy</h2>
-					<p class="fragment">Use <code>slice()</code> to make a one-level deep-copy of an array.</p>
-					<pre class="fragment"><code>
+					<p class="fragment">Use <code class="javascript">slice()</code> to make a one-level deep-copy of an array.</p>
+					<pre class="fragment"><code class="javascript">
 var myArray = [ 'Aaron', 'Drew', 'Tom', 'Peyton' ];
 
 var myArray2 = myArray; //holds a reference to myArray
@@ -274,14 +282,14 @@ console.log( myArray3 );
 					<h2>Comparision</h2>
 					<p class="fragment">In JavaScript there are 2 sets of comparison operators:</p>
 					<ul>
-						<li class="fragment">Type coercion operators: <code>==</code> and <code>!=</code></li>
-						<li class="fragment">Non-type coercion operators (a.k.a. exactly equal): <code>===</code> and <code>!==</code></li>
+						<li class="fragment">Type coercion operators: <code class="javascript">==</code> and <code class="javascript">!=</code></li>
+						<li class="fragment">Non-type coercion operators (a.k.a. exactly equal): <code class="javascript">===</code> and <code class="javascript">!==</code></li>
 					</ul>
 				</section>
 
 				<section>
 					<h2>What exactly is type coersion?</h2>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 console.log( "1" == 1 );
 
 console.log( "1" === 1 );
@@ -294,19 +302,19 @@ console.log( false == '' );
 
 console.log( false === '' );
 					</code></pre>
-					<p class="fragment">Always use === when comparing a variable <code>0</code>, <code>undefined</code>, booleans, <code>null</code>, and empty strings "".</strong></p>
+					<p class="fragment">Always use === when comparing a variable <code class="javascript">0</code>, <code class="javascript">undefined</code>, booleans, <code class="javascript">null</code>, and empty strings "".</strong></p>
 				</section>
 
 				<section>
 					<h2>Truthy and Falsy Values</h2>
-					<p class="fragment">The following values evaluate to <code>false</code>, since some of them not primitive boolean datatypes they are said to be "falsy".</p>
+					<p class="fragment">The following values evaluate to <code class="javascript">false</code>, since some of them not primitive boolean datatypes they are said to be "falsy".</p>
 					<ul>
-						<li><code>false</code></li>
-						<li><code>0</code></li>
-						<li><code>""</code></li>
-						<li><code>undefined</code></li>
-						<li><code>NaN</code></li>
-						<li><code>null</code></li>
+						<li class="fragment"><code class="javascript">false</code></li>
+						<li class="fragment"><code class="javascript">0</code></li>
+						<li class="fragment"><code class="javascript">""</code></li>
+						<li class="fragment"><code class="javascript">undefined</code></li>
+						<li class="fragment"><code class="javascript">NaN</code></li>
+						<li class="fragment"><code class="javascript">null</code></li>
 					</ul>
 					<p class="fragment"><strong>Anything that is not falsy is truthy in JavaScript.</strong></p>
 				</section>
@@ -317,8 +325,8 @@ console.log( false === '' );
 
 				<section>
 					<h2>OR operator</h2>
-					<p class="fragment">The <code>||</code> operator returns the value of the first expression if it's true otherwise returns the value of the second expression.</p>
-					<pre class="fragment"><code>
+					<p class="fragment">The <code class="javascript">||</code> operator returns the value of the first expression if it's true otherwise returns the value of the second expression.</p>
+					<pre class="fragment"><code class="javascript">
 console.log( null || "hello" );
 
 console.log( "world" || "foo" );
@@ -327,8 +335,8 @@ console.log( "world" || "foo" );
 
 				<section>
 					<h2>Using OR operator for assigning default values</h2>
-					<p class="fragment">The <code>||</code> operator can be used to set default values.</p>
-					<pre class="fragment"><code>
+					<p class="fragment">The <code class="javascript">||</code> operator can be used to set default values.</p>
+					<pre class="fragment"><code class="javascript">
 var myFunc = function( arg ){
 
 	var myVal =
@@ -345,8 +353,8 @@ myFunc( &quot;andor3&quot; );
 
 				<section>
 					<h2>AND operator</h2>
-					<p class="fragment">The <code>&amp;&amp;</code> returns the value of the first expression if it is false, otherwise it returns the value of the second.</p>
-					<pre class="fragment"><code>
+					<p class="fragment">The <code class="javascript">&amp;&amp;</code> returns the value of the first expression if it is false, otherwise it returns the value of the second.</p>
+					<pre class="fragment"><code class="javascript">
 console.log( 1 - 1 &amp;&amp; "Foo" );
 
 console.log( 1 + 1 &amp;&amp; "Bar" );
@@ -356,7 +364,7 @@ console.log( 1 + 1 &amp;&amp; "Bar" );
 				<section>
 					<h2>Ternary operator</h2>
 					<p class="fragment">The ternary operator is a terse way to do a simple if/else statement.</p>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 var myVar = 10;
 
 var myValue = ( myVar &lt; 10 ) ? 'lesser' : 'greater';
@@ -364,15 +372,11 @@ var myValue = ( myVar &lt; 10 ) ? 'lesser' : 'greater';
 console.log( myValue );
 					</code></pre>
 
-					<pre class="fragment"><code>
-var myVar = 10,
-	 myValue;
+					<pre class="fragment"><code class="javascript">
+var myVar = 10, myValue;
 
-if(myVar &lt; 10) {
-	myValue = 'lesser';
-} else {
-	myValue = 'greater';
-}
+if(myVar &lt; 10) { myValue = 'lesser'; }
+else { myValue = 'greater'; }
 
 console.log( myValue );
 					</code></pre>
@@ -389,7 +393,7 @@ console.log( myValue );
 
 				<section>
 					<p class="fragment">Objects in JavaScript can be thought of as a set of key-value pairs.</p>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 myObject = { }; //empty object
 
 myObject2 = {
@@ -410,7 +414,7 @@ myObject2 = {
 
 				<section>
 					<p>You can access an object's properties with "dot" notation or with associative array notation.</p>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 var myObject = {
     foo : 'Foo'
 };
@@ -427,8 +431,8 @@ console.log( myObject ['foo ' + 'bar' ] );
 
 				<section>
 					<h2>Access object properties from methods</h2>
-					<p class="fragment">When accessing properties from other properties in an object, use the <code>this</code> keyword.</p>
-					<pre class="fragment"><code>
+					<p class="fragment">When accessing properties from other properties in an object, use the <code class="javascript">this</code> keyword.</p>
+					<pre class="fragment"><code class="javascript">
 var myObj = {
 
     firstName : 'Homer',
@@ -450,8 +454,8 @@ myObj.sayHello();
 
 				<section>
 					<h2>hasOwnProperty()</h2>
-					<p>To check if a property exists in an object use the <code>hasOwnProperty()</code> method or the <code>in</code> operator. <code>hasOwnProperty</code> will only search the current object for a property whereas <code>in</code> will search all the way up the prototype chain.</p>
-					<pre class="fragment"><code>
+					<p>To check if a property exists in an object use the <code class="javascript">hasOwnProperty()</code> method or the <code class="javascript">in</code> operator. <code class="javascript">hasOwnProperty</code> will only search the current object for a property whereas <code class="javascript">in</code> will search all the way up the prototype chain.</p>
+					<pre class="fragment"><code class="javascript">
 var myObject = {foo : 'Foo'};
 
 myObject.__proto__ = { baz : "Baz" }; //we'll talk about this later
@@ -470,7 +474,7 @@ console.log( myObject.hasOwnProperty( 'baz' ) );
 					<h3>Introduction</h3>
 					<p class="fragment">JavaScript functions are the beating heart of a JavaScript application and are one of the most powerful features of the language.</p>
 					<ul>
-						<li class="fragment">All functions return something!  If there is no <code>return</code> statement a function will return the keyword <code>undefined</code>.</li>
+						<li class="fragment">All functions return something!  If there is no <code class="javascript">return</code> statement a function will return the keyword <code class="javascript">undefined</code>.</li>
 						<li class="fragment">Functions can have properties just like objects.</li>
 					</ul>
 				</section>
@@ -482,12 +486,12 @@ console.log( myObject.hasOwnProperty( 'baz' ) );
 
 				<section>
 					<h3>Two ways of creating functions</h3>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 function myFunc( args ) {
     ...
 };
 					</code></pre>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 var myFunc = function( args ) {
     ...
 };
@@ -506,7 +510,7 @@ var myFunc = function( args ) {
 
 				<section>
 					<h3>Function Declaration Before Hoisting</h3>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 function hoistingExample(){
     var firstVar;
 
@@ -531,7 +535,7 @@ function hoistingExample(){
 
 				<section>
 					<h3>Function Declaration After Hoisting</h3>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 function hoistingExample(){
     //the function statement has been brought to the top of the scope
     function secondFunction(){
@@ -566,7 +570,7 @@ function hoistingExample(){
 
 				<section>
 					<p class="fragment">Arguments in JavaScript are stored in an array-like object.  The "arguments" object has a length property but none of the other array methods.</p>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 var myFunc = function(){
     console.log( arguments );
 };
@@ -583,8 +587,8 @@ myFunc( &quot;Hello&quot;, &quot;World&quot;, function(){} );
 
 				<section>
 					<p class="fragment">Since JavaScript is a type-less language its always a good idea to check the type of arguments.</p>
-					<p class="fragment">To do this we are provided with the <code>typeof</code> operator.</p>
-					<pre class="fragment"><code>
+					<p class="fragment">To do this we are provided with the <code class="javascript">typeof</code> operator.</p>
+					<pre class="fragment"><code class="javascript">
 console.log("Type of string: " + typeof "hello");
 
 console.log( "Type of number: " + typeof 1234 );
@@ -600,8 +604,8 @@ console.log( "Type of function: " + typeof undefinedVar );
 				</section>
 
 				<section>
-					<p class="fragment">To check if a variable is defined or not you can use the <code>typeof</code> operator on it.</p>
-					<p class="fragment">Doing <code>if( undefinedVar === 'undefined')</code> will throw an error.</p>
+					<p class="fragment">To check if a variable is defined or not you can use the <code class="javascript">typeof</code> operator on it.</p>
+					<p class="fragment">Doing <code class="javascript">if( undefinedVar === 'undefined')</code> will throw an error.</p>
 				</section>
 
 
@@ -611,9 +615,9 @@ console.log( "Type of function: " + typeof undefinedVar );
 				</section>
 
 				<section>
-					<pre class="fragment"><code>console.log( typeof [] ); //object ?!?</code></pre>
+					<pre class="fragment"><code class="javascript">console.log( typeof [] ); //object ?!?</code></pre>
 					<p class="fragment"></p>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 //borrowed from Douglas Crockford&#39;s &quot;JavaScript: The Good Parts&quot;
 var is_array = function ( value ) {
     return Object.prototype.toString.apply( value ) === &#39;[object Array]&#39;;
@@ -628,7 +632,7 @@ var is_array = function ( value ) {
 
 				<section>
 					<p class="fragment">All arguments JavaScript are passed <strong>by value</strong>, even though they act like they are being passed by reference.</p>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 function createCar(){
     var myCar = { make : "Ford", model : "Fusion" };
 
@@ -666,7 +670,7 @@ createCar();
 
 				<section>
 					<p class="fragment">Functions can be nested inside of other functions.  Each nested function has access to the scope of all its parents.  This is called lexical scoping. </p>
-					<pre class="fragment">
+					<pre class="fragment"><code class="javascript">
 var lexical = function(){
     var outerVar = 'outer';
 
@@ -682,8 +686,7 @@ var lexical = function(){
     }();
 };
 
-lexical();
-					</pre>
+lexical();</code></pre>
 				</section>
 
 				<section data-state="slide-level-two functions-closures">
@@ -700,7 +703,7 @@ lexical();
 				</section>
 
 				<section>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 var timesCalled = function(){
     var total = 0;
 
@@ -723,17 +726,17 @@ callTimer();
 				</section>
 
 				<section>
-					<p class="fragment">JavaScript has a special type of function called a <code>Constructor</code> function.</p>
+					<p class="fragment">JavaScript has a special type of function called a <code class="javascript">Constructor</code> function.</p>
 					<ul>
 						<li class="fragment">By convention the first letter of a constructor should be a capital letter.</li>
-						<li class="fragment">Never use a constructor function without first using the <code>new</code> keyword!</li>
+						<li class="fragment">Never use a constructor function without first using the <code class="javascript">new</code> keyword!</li>
 						<li class="fragment">Using the new keyword will create a new scope for the function.</li>
 						<li class="fragment">Using the new keyword will also create the inheritance tree. Without new a function will only inherit from the Function Constructor.</li>
 					</ul>
 				</section>
 
 				<section>
-					<pre><code>
+					<pre><code class="javascript">
 //create a new constuctor function called Robot
 var Robot = function( robotName ){
     this.robotName = robotName;
@@ -760,7 +763,7 @@ console.log( window.robotName ); //note that robotName is now a property of wind
 
 				<section>
 					<p class="fragment">Create a new variable for our constructor function.  Make sure the name starts with a capital letter!</p>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 var Robot = function( robotName ){
 	this.robotName = robotName;
 };
@@ -769,8 +772,8 @@ var Robot = function( robotName ){
 
 				<section>
 					<p class="fragment">Now add a new property to the prototype of the constructor.</p>
-					<p class="fragment">This is initialized with the prototype chain when the <code>new</code> keyword is used.</p>
-					<pre class="fragment"><code>
+					<p class="fragment">This is initialized with the prototype chain when the <code class="javascript">new</code> keyword is used.</p>
+					<pre class="fragment"><code class="javascript">
 Robot.prototype.walk = function(){
     console.log( "Go " + this.robotName + " go!" );
 };
@@ -779,9 +782,9 @@ Robot.prototype.walk = function(){
 
 				<section>
 					<p class="fragment">Correct.</p>
-					<pre class="fragment"><code>var robot = new Robot( "Ferbbot" );</code></pre>
+					<pre class="fragment"><code class="javascript">var robot = new Robot( "Ferbbot" );</code></pre>
 					<p class="fragment">Incorrect, not using the keyword does not create a scope or a prototype chain.</p>
-					<pre class="fragment"><code>var anotherRobot = Robot( "Phineasbot" );</code></pre>
+					<pre class="fragment"><code class="javascript">var anotherRobot = Robot( "Phineasbot" );</code></pre>
 				</section>
 
 				<section data-state="slide-level-one this">
@@ -794,8 +797,8 @@ Robot.prototype.walk = function(){
 				</section>
 
 				<section>
-					<p class="fragment">The <code>this</code> keyword one of JavaScript's most mis-understood keywords.</p>
-					<pre class="fragment"><code>
+					<p class="fragment">The <code class="javascript">this</code> keyword one of JavaScript's most mis-understood keywords.</p>
+					<pre class="fragment"><code class="javascript">
 var myObj = {
     myFunc : function() {
         console.log(this);
@@ -820,7 +823,7 @@ myFunc();
 					<p class="fragment">What happened in the function call?  Why did this point to window and not the function?</p>
 					<p class="fragment">In order to explain we must understand what "this" means in JavaScript.  This refers to the <strong>current execution context.</strong></p>
 					<p class="fragment">When we called the myFunc function from within the object, the object was the current execution context.</p>
-					<p class="fragment">When we called <code>myFunc()</code> from the root of the script tag, the window object was the current execution context.</p>
+					<p class="fragment">When we called <code class="javascript">myFunc()</code> from the root of the script tag, the window object was the current execution context.</p>
 				</section>
 
 				<section data-state="slide-level-two this-call-apply">
@@ -829,9 +832,9 @@ myFunc();
 				</section>
 
 				<section>
-					<p class="fragment">The <code>call(this,arg1, arg2, arg3, ...)</code> and <code>apply(this,[args])</code> functions allow you to pass the value of <code>this</code> as the first parameter.</p>
+					<p class="fragment">The <code class="javascript">call(this,arg1, arg2, arg3, ...)</code> and <code class="javascript">apply(this,[args])</code> functions allow you to pass the value of <code class="javascript">this</code> as the first parameter.</p>
 					<p class="fragment">The difference is that the call function takes in any number of arguments whereas the apply function takes an array of arguments as its second argument.</p>
-					<pre class="fragment"><code>
+					<pre class="fragment"><code class="javascript">
 function whoAmI(){
     console.log( "I am: " + this );
 
@@ -850,7 +853,7 @@ whoAmI.apply( "Scott", [ "Hello World", undefined, {}, [] ] );
 				</section>
 
 				<section>
-					<pre><code>
+					<pre><code class="javascript">
 function Person( name ){
     this.name = name;
 
@@ -868,7 +871,7 @@ var person = new Person( &quot;Bart&quot; );
 				</section>
 
 				<section>
-					<pre><code>
+					<pre><code class="javascript">
 var myObj = {
     firstName : "Homer",
 
@@ -889,7 +892,7 @@ myObj.sayHello();
 				</section>
 
 				<section>
-					<pre><code>
+					<pre><code class="javascript">
 var myObj = {
     firstName : &quot;Homer&quot;,
 
@@ -904,7 +907,7 @@ var myObj = {
 
 myObj.sayHello();
 					</code></pre>
-					<p class="fragment">In nested functions <code>this</code> refers back to global namespace!</p>
+					<p class="fragment">In nested functions <code class="javascript">this</code> refers back to global namespace!</p>
 				</section>
 
 				<section data-state="slide-level-two this-more-links">
@@ -916,6 +919,15 @@ myObj.sayHello();
 					<p class="fragment">For a much more comprehensive look at "this" and "function invocation" read:
 					<p class="fragment">Yehuda Kat's blog post: <a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/" target="_blank">http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/</a></p>
 					<p class="fragment">Scope In JavaScript: <a href="http://www.digital-web.com/articles/scope_in_javascript/">http://www.digital-web.com/articles/scope_in_javascript/</a></p>
+				</section>
+
+				<section data-state="slide-level-one qna">
+					<h1>Q&amp;A!</h1>
+					<p>Feel free to ask any questions/doubts etc. :)</p>
+				</section>
+
+				<section data-state="slide-level-one thank-you">
+					<h1>Thank you!</h1>
 				</section>
 			</div>
 
