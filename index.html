@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>JavaScript</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="JavaScript presentation">
+		<meta name="author" content="Rishabh Rao">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -36,10 +36,9 @@
 			<div class="slides">
 
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
+					<h1>JavaScript For You!</h1>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						<small>By <a href="http://rishabhsrao.github.com">Rishabh Rao</a> | <a href="http://twitter.com/rishabhsrao">@rishabhsrao</a></small>
 					</p>
 				</section>
 
@@ -49,82 +48,67 @@
 						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
 						support for CSS 3D transforms to see it in its full glory.
 					</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
 				</section>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
+				<section data-state="title-slide slidebg-agenda">
+					<h2>Today&rsquo;s agenda</h2>
 				</section>
 
 				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview. Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
+					<h2>Basics</h2>
 				</section>
 
 				<section>
-					<h2>rvl.io</h2>
-					<p>
-						If you don't like writing slides in HTML you can use the online editor <a href="http://www.rvl.io" target="_blank">rvl.io</a>.
-					</p>
+					<h4>Basics</h4>
+					<h2>Variables</h2>
 				</section>
 
 				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
+					<h2>Data types</h2>
 				</section>
 
 				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
+					<h2>Variable scope</h2>
 				</section>
 
 				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
+					<h2>Oops!</h2>
+					<pre><code>
+function doSometing(){
+	for( i = 0; i < 10; i++ ){
+   	doMore();
+   	console.log( i );
+	}
+}
+
+function doMore(){
+	for( i = 0; i < 10; i++ ){
+		//do some stuff
+	}
+};
+
+doSometing();
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>That's better!</h2>
+					<pre><code>
+function doSometing() {
+  for( var i = 0; i < 10; i++ ) {
+    doMore();
+    console.log( i );
+  }
+}
+
+function doMore() {
+	for( var i = 0; i < 10; i++ ) {
+     	//do some stuff
+  	}
+};
+
+doSometing();
+						</code></pre>
 				</section>
 
 				<section data-markdown>
