@@ -1,0 +1,149 @@
+html.slide-level-one body, html.slide-level-two body {
+   background-position: center;
+   background-size: 100%;
+
+   -webkit-transition:background 800ms ease;
+   -moz-transition:background 800ms ease;
+   -ms-transition:background 800ms ease;
+   -o-transition:background 800ms ease;
+   transition:background 800ms ease;
+}
+
+html.slide-level-one h1,
+html.slide-level-one p,
+html.slide-level-two h1,
+html.slide-level-two p {
+   background-color: rgba(255, 255, 255, 0.4);
+   padding: 15px;
+}
+
+/* Level 1 */
+html.slide-level-one.javascript-for-you body {
+   background-image: url('../img/javascript-for-you.jpg');
+}
+
+html.slide-level-one.welcome-thank-you body {
+   background-image: url('../img/welcome-thank-you.PNG');
+}
+
+html.slide-level-one.brag body {
+   background-image: url('../img/brag.jpg');
+}
+
+html.slide-level-one.agenda body {
+   background-image: url('../img/agenda.PNG');
+}
+
+html.slide-level-one.history body {
+   background-image: url('../img/history.PNG');
+}
+
+html.slide-level-one.basics body {
+   background-image: url('../img/basics.PNG');
+}
+
+html.slide-level-one.objects body {
+   background-image: url('../img/objects.PNG');
+}
+
+html.slide-level-one.functions body {
+   background-image: url('../img/functions.PNG');
+}
+
+html.slide-level-one.this body {
+   background-image: url('../img/this.PNG');
+}
+
+/* Level 2 */
+html.slide-level-two.basics-variables body {
+   background-image: url("../img/basics-variables.jpg");
+}
+
+html.slide-level-two.basics-numbers body {
+   background-image: url("../img/basics-numbers.PNG");
+}
+
+html.slide-level-two.basics-arrays body {
+   background-image: url("../img/basics-arrays.PNG");
+}
+
+html.slide-level-two.basics-operators body {
+   background-image: url("../img/basics-operators.PNG");
+}
+
+html.slide-level-two.objects-basics body {
+   background-image: url("../img/objects-basics.PNG");
+}
+
+html.slide-level-two.objects-retrival body {
+   background-image: url("../img/objects-retrival.PNG");
+}
+
+html.slide-level-two.objects-own-property body {
+   background-image: url("../img/objects-own-property.PNG");
+}
+
+html.slide-level-two.functions-creating body {
+   background-image: url("../img/functions-creating.PNG");
+}
+
+html.slide-level-two.functions-hoisting body {
+   background-image: url("../img/functions-hoisting.PNG");
+}
+
+html.slide-level-two.functions-arguments body {
+   background-image: url("../img/functions-arguments.PNG");
+}
+
+html.slide-level-two.functions-typeof body {
+   background-image: url("../img/functions-typeof.PNG");
+}
+
+
+html.slide-level-two.functions-typeof-arrays body {
+   background-image: url("../img/functions-typeof-arrays.PNG");
+}
+
+html.slide-level-two.functions-arguments body {
+   background-image: url("../img/functions-arguments.PNG");
+}
+
+html.slide-level-two.functions-lexical-scoping body {
+   background-image: url("../img/functions-lexical-scoping.PNG");
+}
+
+html.slide-level-two.functions-closures body {
+   background-image: url("../img/functions-closures.PNG");
+}
+
+html.slide-level-two.functions-constructor-functions body {
+   background-image: url("../img/functions-constructor-functions.PNG");
+}
+
+html.slide-level-two.this-intro body {
+   background-image: url("../img/this-intro.PNG");
+}
+
+html.slide-level-two.this-execution-context body {
+   background-image: url("../img/this-execution-context.PNG");
+}
+
+html.slide-level-two.this-call-apply body {
+   background-image: url("../img/this-call-apply.PNG");
+}
+
+html.slide-level-two.this-constructor-functions body {
+   background-image: url("../img/this-constructor-functions.PNG");
+}
+
+html.slide-level-two.this-object-literals body {
+   background-image: url("../img/this-object-literals.PNG");
+}
+
+html.slide-level-two.this-nested-functions body {
+   background-image: url("../img/this-nested-functions.PNG");
+}
+
+html.slide-level-two.this-more-links body {
+   background-image: url("../img/this-more-links.PNG");
+}

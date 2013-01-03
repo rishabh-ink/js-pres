@@ -14,6 +14,7 @@
 
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/custom.css">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -35,39 +36,41 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 
-				<section data-state="slide-level-one">
+				<section data-state="slide-level-one javascript-for-you">
 					<h1>JavaScript For You!</h1>
 				</section>
 
-				<section data-state="slide-level-one">
+				<section data-state="slide-level-one welcome-thank-you">
 					<h1>Welcome and thank you for coming!</h2>
 				</section>
 
-				<section data-state="slide-level-one">
+				<section data-state="slide-level-one brag">
 					<h1>Brag about us!</h2>
 				</section>
 
-				<section data-state="slide-level-one">
+				<section data-state="slide-level-one agenda">
 					<h2>Today&rsquo;s agenda</h2>
+				</section>
+
+				<section>
 					<ol>
 						<li class="fragment">History</li>
 						<li class="fragment">Basics</li>
 						<li class="fragment">Objects</li>
 						<li class="fragment">Functions</li>
-						<li class="fragment">Inheritance</li>
 						<li class="fragment">This</li>
 					</ol>
 				</section>
 
-				<section data-state="slide-level-one">
+				<section data-state="slide-level-one history">
 					<h1>History</h1>
 				</section>
 
-				<section data-state="slide-level-one">
+				<section data-state="slide-level-one basics">
 					<h1>Basics</h1>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two basics-variables">
 					<h4>Basics</h4>
 					<h2>Variables</h2>
 				</section>
@@ -138,7 +141,7 @@ doSometing();
 						</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two basics-numbers">
 					<h4>Basics</h4>
 					<h2>Numbers</h2>
 				</section>
@@ -177,7 +180,7 @@ console.log( 3.14159.toFixed( 2 ) ); // 3.14
 			    </ul>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two basics-arrays">
 					<h4>Basics</h4>
 					<h2>Arrays</h2>
 				</section>
@@ -262,7 +265,7 @@ console.log( myArray3 );
 					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two basics-operators">
 					<h4>Basics</h4>
 					<h2>Operators</h2>
 				</section>
@@ -308,7 +311,7 @@ console.log( false === '' );
 					<p class="fragment"><strong>Anything that is not falsy is truthy in JavaScript.</strong></p>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two basics-operators">
 					<h2>Logical operators</h2>
 				</section>
 
@@ -375,17 +378,16 @@ console.log( myValue );
 					</code></pre>
 				</section>
 
-				<section data-state="slide-level-one">
+				<section data-state="slide-level-one objects">
 					<h1>Objects</h1>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two objects-basics">
 					<h4>Objects</h4>
 					<h2>Object Basics</h2>
 				</section>
 
 				<section>
-					<h2>Introduction</h2>
 					<p class="fragment">Objects in JavaScript can be thought of as a set of key-value pairs.</p>
 					<pre class="fragment"><code>
 myObject = { }; //empty object
@@ -401,13 +403,12 @@ myObject2 = {
 					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two objects-retrival">
 					<h4>Objects</h4>
 					<h2>Retrival</h2>
 				</section>
 
 				<section>
-					<h2>Object access</h2>
 					<p>You can access an object's properties with "dot" notation or with associative array notation.</p>
 					<pre class="fragment"><code>
 var myObject = {
@@ -442,7 +443,7 @@ myObj.sayHello();
 					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two objects-own-property">
 					<h4>Objects</h4>
 					<h2>Own Property</h2>
 				</section>
@@ -461,7 +462,7 @@ console.log( myObject.hasOwnProperty( 'baz' ) );
 					</code></pre>
 				</section>
 
-				<section data-state="slide-level-one">
+				<section data-state="slide-level-one functions">
 					<h1>Functions</h1>
 				</section>
 
@@ -474,7 +475,7 @@ console.log( myObject.hasOwnProperty( 'baz' ) );
 					</ul>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two functions-creating">
 					<h4>Functions</h4>
 					<h2>Creating functions</h2>
 				</section>
@@ -493,7 +494,7 @@ var myFunc = function( args ) {
 					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two functions-hoisting">
 					<h4>Functions</h4>
 					<h2>Hoisting</h2>
 				</section>
@@ -558,7 +559,7 @@ function hoistingExample(){
 					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two functions-arguments">
 					<h4>Functions</h4>
 					<h2>Arguments</h2>
 				</section>
@@ -575,7 +576,7 @@ myFunc( &quot;Hello&quot;, &quot;World&quot;, function(){} );
 				</section>
 
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two functions-typeof">
 					<h4>Functions</h4>
 					<h2>typeof</h2>
 				</section>
@@ -604,7 +605,7 @@ console.log( "Type of function: " + typeof undefinedVar );
 				</section>
 
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two functions-typeof-arrays">
 					<h4>Functions</h4>
 					<h2>typeof for arrays</h2>
 				</section>
@@ -620,7 +621,7 @@ var is_array = function ( value ) {
 					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two functions-arguments">
 					<h4>Functions</h4>
 					<h2>arguments pass by value</h2>
 				</section>
@@ -658,7 +659,7 @@ createCar();
 					<img src="" alt="" class="fragment" />
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two functions-lexical-scoping">
 					<h4>Functions</h4>
 					<h2>Lexical scoping</h2>
 				</section>
@@ -685,7 +686,7 @@ lexical();
 					</pre>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two functions-closures">
 					<h4>Functions</h4>
 					<h2>Closures</h2>
 				</section>
@@ -716,7 +717,7 @@ callTimer();
 					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two functions-constructor-functions">
 					<h4>Functions</h4>
 					<h2>Constructor functions</h2>
 				</section>
@@ -783,11 +784,11 @@ Robot.prototype.walk = function(){
 					<pre class="fragment"><code>var anotherRobot = Robot( "Phineasbot" );</code></pre>
 				</section>
 
-				<section data-state="slide-level-one">
+				<section data-state="slide-level-one this">
 					<h1>This</h1>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two this-intro">
 					<h4>This</h4>
 					<h2>Intro</h2>
 				</section>
@@ -810,7 +811,7 @@ myFunc();
 					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two this-execution-context">
 					<h4>This</h4>
 					<h2>Execution context</h2>
 				</section>
@@ -822,7 +823,7 @@ myFunc();
 					<p class="fragment">When we called <code>myFunc()</code> from the root of the script tag, the window object was the current execution context.</p>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two this-call-apply">
 					<h4>This</h4>
 					<h2>call() and apply()</h2>
 				</section>
@@ -843,7 +844,7 @@ whoAmI.apply( "Scott", [ "Hello World", undefined, {}, [] ] );
 					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two this-constructor-functions">
 					<h4>This</h4>
 					<h2>this in constructor functions</h2>
 				</section>
@@ -861,7 +862,7 @@ var person = new Person( &quot;Bart&quot; );
 					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two this-object-literals">
 					<h4>This</h4>
 					<h2>this in object literals</h2>
 				</section>
@@ -882,7 +883,7 @@ myObj.sayHello();
 					</code></pre>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two this-nested-functions">
 					<h4>This</h4>
 					<h2>this in nested functions</h2>
 				</section>
@@ -906,7 +907,7 @@ myObj.sayHello();
 					<p class="fragment">In nested functions <code>this</code> refers back to global namespace!</p>
 				</section>
 
-				<section data-state="slide-level-two">
+				<section data-state="slide-level-two this-more-links">
 					<h4>This</h4>
 					<h2>More links on this</h2>
 				</section>
