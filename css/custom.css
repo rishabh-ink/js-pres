@@ -11,7 +11,7 @@ html.slide-level-one body, html.slide-level-two body {
 
 html.slide-level-one section,
 html.slide-level-two section {
-   background-color: rgba(255, 255, 255, 0.4);
+   background-color: rgba(255, 255, 255, 0.9);
    padding: 15px;
 }
 
