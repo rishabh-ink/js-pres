@@ -95,11 +95,11 @@
 					<h2>Variable scope</h2>
 					<pre class="fragment"><code contenteditable="true" class="javascript">
 function doSomething() {
-	pug = &quot;jamun&quot;; // this goes into the global scope
+	pug = &quot;Scooby&quot;; // this goes into the global scope
 	var anotherPug = &quot;vodafonePug&quot;; // this goes into the function scope
 }
 
-console.log( pug ); // "jamun"
+console.log( pug ); // "Scooby"
 console.log( anotherPug ); // Oops! Can't access anotherPug from here! :(
 					</code></pre>
 				</section>
@@ -168,8 +168,8 @@ console.log( "0.06 + 0.01 = " + result ); // 0.06999999999999999 Oops!
 
 					<ul>
 						<li class="fragment">Convert to integers, calculate, convert it back.</li>
-						<li class="fragment">JavaScript has a <strong>BigNum</strong> library which will improve the accuracy of floating point expressions at <a href="https://github.com/jtobey/javascript-bignum" target="_blank">https://github.com/jtobey/javascript-bignum</a></li>
-						<li class="fragment">Use the <code contenteditable="true" class="javascript">toFixed()</code> method to round a number to a specified number of decimal places.</li>
+						<li class="fragment"><a href="https://github.com/jtobey/javascript-bignum" target="_blank"><strong>BigNum</strong> library</a></li>
+						<li class="fragment"><code contenteditable="true" class="javascript">toFixed()</code></li>
 					</ul>
 					<pre class="fragment"><code contenteditable="true" class="javascript">
 console.log( 3.14159.toFixed( 2 ) ); // 3.14
@@ -194,11 +194,8 @@ console.log( 3.14159.toFixed( 2 ) ); // 3.14
 
 				<section>
 					<h2>Creating arrays</h2>
-					<p class="fragment">Arrays can be created two ways:</p>
-					<pre class="fragment"><code contenteditable="true" class="javascript">var myArray = new Array( 'item1', 'item2', myobj, [] );</code></pre>
-					<p class="fragment">and</p>
-					<pre class="fragment"><code contenteditable="true" class="javascript">var myArray = [ "item1", "item2", myObj, [] ]; //prefered</code></pre>
-					<p class="fragment">In order to create multi-dimensional arrays in JavaScript you nest arrays:</p>
+					<pre class="fragment"><code contenteditable="true" class="javascript">var myArray = [ "item1", "item2", myObj, [] ];</code></pre>
+					<p class="fragment">Multi-dimensional arrays in JavaScript</p>
 					<pre class="fragment"><code contenteditable="true" class="javascript">myArray[ 0 ] = [ "nested one", "nested two" ];
 myArray[ 0 ][ 1 ]; // nested two</code></pre>
 				</section>
@@ -212,8 +209,8 @@ myArray[ 0 ][ 1 ]; // nested two</code></pre>
 					<pre class="fragment"><code contenteditable="true" class="javascript">myArray.pop(); // removes the last element of the array and returns it</code></pre>
 					<pre class="fragment"><code contenteditable="true" class="javascript">myArray.concat( anotherArray ); // adds two arrays together, returns a new array. myArray unchanged!</code></pre>
 					<pre class="fragment"><code contenteditable="true" class="javascript">myArray.join( &quot;,&quot; ); // combines elements into string, separated by argument</code></pre>
-					<pre class="fragment"><code contenteditable="true" class="javascript">myArray.slice( 1, 2 ) // returns 2 items from the array starting at position 1</code></pre>
-					<pre class="fragment"><code contenteditable="true" class="javascript">myArray.shift() // removes the first element of the array and returns it</code></pre>
+					<pre class="fragment"><code contenteditable="true" class="javascript">myArray.slice( 1, 2 ); // returns 2 items from the array starting at position 1</code></pre>
+					<pre class="fragment"><code contenteditable="true" class="javascript">myArray.shift(); // removes the first element of the array and returns it</code></pre>
 				</section>
 
 				<section>
@@ -316,7 +313,7 @@ console.log( false === '' ); // false
 
 				<section>
 					<h2>Truthy and Falsy Values</h2>
-					<p class="fragment">The following values evaluate to <code contenteditable="true" class="javascript">false</code>, since some of them not primitive boolean datatypes they are said to be "falsy".</p>
+					<p class="fragment">The following values evaluate to <code contenteditable="true" class="javascript">false</code>.</p>
 					<ul>
 						<li class="fragment"><code contenteditable="true" class="javascript">false</code></li>
 						<li class="fragment"><code contenteditable="true" class="javascript">0</code></li>
@@ -325,7 +322,7 @@ console.log( false === '' ); // false
 						<li class="fragment"><code contenteditable="true" class="javascript">NaN</code></li>
 						<li class="fragment"><code contenteditable="true" class="javascript">null</code></li>
 					</ul>
-					<p class="fragment"><strong>Anything that is not falsy is truthy in JavaScript.</strong></p>
+					<p class="fragment">Anything that is not falsy is truthy in JavaScript.</p>
 				</section>
 
 				<section data-state="slide-level-two basics-operators">
@@ -334,7 +331,6 @@ console.log( false === '' ); // false
 
 				<section>
 					<h2>OR operator</h2>
-					<p class="fragment">The <code contenteditable="true" class="javascript">||</code> operator returns the value of the first expression if it's true otherwise returns the value of the second expression.</p>
 					<pre class="fragment"><code contenteditable="true" class="javascript">
 console.log( null || "hello" );
 
@@ -343,36 +339,31 @@ console.log( "world" || "foo" );
 				</section>
 
 				<section>
-					<h2>Using OR operator for assigning default values</h2>
-					<p class="fragment">The <code contenteditable="true" class="javascript">||</code> operator can be used to set default values.</p>
+					<h2>Default values</h2>
 					<pre class="fragment"><code contenteditable="true" class="javascript">
-var myFunc = function( arg ){
+var nameDog = function( nameArg ){
 
-	var myVal =
-		document.getElementById( arg ) ||
-		document.createElement( &quot;div&quot; ); // defaultValue
+	var name = nameArg || "Scooby"; // defaultValue
 
-	console.log( myVal );
+	console.log( name );
 };
 
-myFunc( );
-myFunc( &quot;andor3&quot; );
+nameDog( );
+nameDog( &quot;Android&quot; );
 					</code></pre>
 				</section>
 
 				<section>
 					<h2>AND operator</h2>
-					<p class="fragment">The <code contenteditable="true" class="javascript">&amp;&amp;</code> returns the value of the first expression if it is false, otherwise it returns the value of the second.</p>
 					<pre class="fragment"><code contenteditable="true" class="javascript">
-console.log( 1 - 1 &amp;&amp; "Foo" );
+console.log( (1 - 1) &amp;&amp; "Foo" );
 
-console.log( 1 + 1 &amp;&amp; "Bar" );
+console.log( (1 + 1) &amp;&amp; "Bar" );
 					</code></pre>
 				</section>
 
 				<section>
 					<h2>Ternary operator</h2>
-					<p class="fragment">The ternary operator is a terse way to do a simple if/else statement.</p>
 					<pre class="fragment"><code contenteditable="true" class="javascript">
 var myVar = 10;
 
@@ -401,18 +392,17 @@ console.log( myValue );
 				</section>
 
 				<section>
-					<p class="fragment">Objects in JavaScript can be thought of as a set of key-value pairs.</p>
 					<pre class="fragment"><code contenteditable="true" class="javascript">
-myObject = { }; //empty object
+myObject = {}; // empty object
 
-myObject2 = {
-    foo : &quot;Foo&quot;,
-    bar : &quot;Bar&quot;,
-    anotherObject : {
-        baz : &quot;Baz&quot;,
-        pez : &quot;Pez&quot;
-    }
-}; //this is called an object literal pattern
+pug = {
+	name: "Scooby",
+	wearsShorts: true,
+	likes: {
+		apples: true,
+		chocolates: false
+	}
+}; // this is called an object literal pattern
 					</code></pre>
 				</section>
 
@@ -422,37 +412,35 @@ myObject2 = {
 				</section>
 
 				<section>
-					<p>You can access an object's properties with "dot" notation or with associative array notation.</p>
 					<pre class="fragment"><code contenteditable="true" class="javascript">
-var myObject = {
-    foo : 'Foo'
+var pug = {
+    name : "Scooby"
 };
 
-myObject[ 'foo bar' ] = 'foo bar'; // non standard property names
+pug[ 'cousin-name' ] = 'Scrappy Doo'; // non standard property names
 
-console.log( myObject.foo );
+console.log( pug.name );
 
-console.log( myObject[ 'foo' ] );
+console.log( pug[ 'name' ] );
 
-console.log( myObject ['foo ' + 'bar' ] );
+console.log( pug ['cousin' + '-' + 'name' ] );
 					</code></pre>
 				</section>
 
 				<section>
 					<h2>Access object properties from methods</h2>
-					<p class="fragment">When accessing properties from other properties in an object, use the <code contenteditable="true" class="javascript">this</code> keyword.</p>
 					<pre class="fragment"><code contenteditable="true" class="javascript">
-var myObj = {
+var pug = {
 
-    firstName : 'Homer',
+    name: 'Scooby',
 
-    sayHello : function(){
+    bark: function() {
         //omitting the this keyword below would generate an error
-        console.log( 'Hello, ' + this.firstName );
+        console.log(this.name + " says woof woof!");
     }
 };
 
-myObj.sayHello();
+pug.bark();
 					</code></pre>
 				</section>
 
